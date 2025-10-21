@@ -14,6 +14,21 @@ sudo update-alternatives --set editor /usr/local/bin/nvim
 ##### Windows
 `winget install --id Neovim.Neovim`
 
+## [init.vim](./init.vim)
+
+##### Linux
+```sh
+mkdir -p $HOME/.config/nvim
+ln -s $DOTFILES/nvim/init.vim $HOME/.config/nvim/init.vim
+```
+
+##### Windows
+
+```powershell
+New-Item -Type Directory -Force $env:LOCALAPPDATA\nvim
+New-Item -Type SymbolicLink -Target $env:DOTFILES\nvim\init.vim $env:LOCALAPPDATA\nvim\init.vim
+```
+
 ## [vim-plug](https://github.com/junegunn/vim-plug)
 
 ##### Linux
@@ -23,7 +38,8 @@ curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://r
 
 ##### Windows
 ```powershell
-Invoke-WebRequest -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | New-Item "$env:LOCALAPPDATA/nvim-data/site/autoload/plug.vim" -Force
+New-Item -Type Directory -Force $env:LOCALAPPDATA\nvim-data
+Invoke-WebRequest -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | New-Item $env:LOCALAPPDATA\nvim-data\site\autoload\plug.vim -Force
 ```
 
 ## [powerline-fonts](https://github.com/powerline/fonts)
