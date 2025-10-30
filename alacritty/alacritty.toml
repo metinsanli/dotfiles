@@ -1,0 +1,9 @@
+[env]
+TERM = "xterm-256color"
+
+[font]
+normal = { family = "Jet Brains Mono", style = "Regular" }
+size = 12
+
+[terminal]
+osc52 = "CopyPaste"
