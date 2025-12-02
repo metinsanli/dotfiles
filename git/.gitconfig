@@ -1,0 +1,14 @@
+[alias]
+    cfg = "config --list"
+    cl = "clone"
+    cm = "commit -m"
+    co = "checkout"
+    d = "diff"
+    ds = "diff --compact-summary"
+    l = "log --oneline"
+    la = "log --graph --pretty=oneline --abbrev-commit --all"
+    lo = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
+    ls = "log --oneline --show-signature"
+    s = "status --short"
+    ss = "status"
+
