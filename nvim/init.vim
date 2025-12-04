@@ -55,20 +55,24 @@ function! CheckBackspace() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
+" Ctrl+Space ile otomatik tamamlama menusunu manuel tetikler. 
+inoremap <silent><expr> <c-space> coc#refresh()
 
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" Bir önceki/sonraki hata veya uyarıya git.
+nmap <silent> gp <Plug>(coc-diagnostic-prev)
+nmap <silent> gn <Plug>(coc-diagnostic-next)
+
+" Imlecin altindaki sembolun tanımına/Tip tanimina/Implementasyona/Referans
+" oldugu yerleri goster
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Hover dokumantasyonunu goster.
 nnoremap <silent> K :call ShowDocumentation()<CR>
 
+" Coc hover saglayicisi varsa onu kullan, yoksa Vim'in varsayilan K davranisini kullan.
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
@@ -77,8 +81,13 @@ function! ShowDocumentation()
   endif
 endfunction
 
+" Imlec bir sure hareketsiz kaldiginda ayni sembolleri vurgula
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Sembol ismi değiştir
 nmap <leader>rn <Plug>(coc-rename)
+
+" Secili kodu bicimlendir (visual ve normal modda)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
